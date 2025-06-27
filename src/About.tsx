@@ -4,7 +4,7 @@ import { FaTwitter, FaFacebook, FaInstagram } from "react-icons/fa";
 
 function About() {
   return (
-    <main id="about" className=" p-4 sm:p-10 relative overflow-hidden">
+    <main className=" p-4 sm:p-10 relative overflow-hidden">
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}

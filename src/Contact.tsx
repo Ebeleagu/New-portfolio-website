@@ -64,7 +64,7 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <main id="Contact" className=" p-10 w-full font-mono text-white h-[100vh]">
+    <main className=" p-10 w-full font-mono text-white h-[100vh]">
       <h1 className="text-4xl text-center font-bold mb-6">Contact Form</h1>
       <form
         onSubmit={handleSubmit}

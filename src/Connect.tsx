@@ -12,10 +12,7 @@ const Connect = () => {
   };
 
   return (
-    <main
-      id="contact"
-      className="min-h-screen p-6 bg-gray-900 text-white flex flex-col justify-center items-center"
-    >
+    <main className="min-h-screen p-6 bg-gray-900 text-white flex flex-col justify-center items-center">
       <motion.div
         className="flex justify-center items-center gap-10 mb-8"
         initial={{ opacity: 0, y: -50 }}

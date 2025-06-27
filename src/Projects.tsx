@@ -9,13 +9,8 @@ const Projects = () => {
   };
 
   return (
-    <main
-      id="Projects"
-      className="h-full p-6 md:p-10 bg-gray-900 text-white w-full"
-    >
-      
+    <main className="h-full p-6 md:p-10 bg-gray-900 text-white w-full">
       <div className="mx-auto" style={{ width: "80vw" }}>
-      
         <h2 className="text-2xl mb-2 font-mono opacity-40 text-center">
           PORTFOLIO
         </h2>
@@ -23,7 +18,6 @@ const Projects = () => {
           Checkout a few of my works
         </p>
 
-        
         <div className="flex flex-col md:flex-row items-center md:gap-10 space-y-8 md:space-y-0">
           <motion.div
             className="flex-1 max-w-[90%] md:max-w-[40vw] mx-auto md:mx-0 rounded-lg shadow-lg overflow-hidden"
@@ -72,7 +66,6 @@ const Projects = () => {
           </motion.div>
         </div>
 
-        
         <div className="flex flex-col md:flex-row-reverse items-center md:gap-10 space-y-8 md:space-y-0 mt-16">
           <motion.div
             className="flex-1 max-w-[90%] md:max-w-[40vw] mx-auto md:mx-0 rounded-lg shadow-lg overflow-hidden"
