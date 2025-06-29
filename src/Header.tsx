@@ -2,48 +2,46 @@ import React, { useState, useRef, useEffect } from "react";
 import Pic from "/zavid.jpg";
 import { IoMenuOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const Header: React.FC = () => {
+  const location = useLocation();
+  console.log("Current URL:", location.pathname);
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const [isMobileOverlay, setMobileOverlay] = useState(false);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
 
   const toggleDropdown = () => {
-    if (window.innerWidth < 768) {
-      setMobileOverlay(!isMobileOverlay);
-      setDropdownOpen(!isMobileOverlay);
-    } else {
-      setDropdownOpen((prev) => !prev);
-    }
+    setDropdownOpen(!isDropdownOpen);
   };
 
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(event.target as Node)
-      ) {
-        setDropdownOpen(false);
-        setMobileOverlay(false);
-      }
-    };
+  // useEffect(() => {
+  //   const handleClickOutside = (event: MouseEvent) => {
+  //     if (
+  //       dropdownRef.current &&
+  //       !dropdownRef.current.contains(event.target as Node)
+  //     ) {
+  //       setDropdownOpen(false);
+  //       setMobileOverlay(false);
+  //     }
+  //   };
 
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setDropdownOpen(false);
-        setMobileOverlay(false);
-      }
-    };
+  //   const handleKeyDown = (event: KeyboardEvent) => {
+  //     if (event.key === "Escape") {
+  //       setDropdownOpen(false);
+  //       setMobileOverlay(false);
+  //     }
+  //   };
 
-    if (isDropdownOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-      document.addEventListener("keydown", handleKeyDown);
-    }
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-      document.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [isDropdownOpen, isMobileOverlay]);
+  //   if (isDropdownOpen) {
+  //     document.addEventListener("mousedown", handleClickOutside);
+  //     document.addEventListener("keydown", handleKeyDown);
+  //   }
+  //   return () => {
+  //     document.removeEventListener("mousedown", handleClickOutside);
+  //     document.removeEventListener("keydown", handleKeyDown);
+  //   };
+  // }, [isDropdownOpen, isMobileOverlay]);
 
   return (
     <header className="h-[12vh] bg-gray-900 text-white flex justify-center relative z-50 shadow-md shadow-gray">
@@ -58,12 +56,12 @@ const Header: React.FC = () => {
             David Ben
           </span>
         </div>
-
+        {/* <Link to="/about">About</Link> */}
         <div className="relative flex items-center" ref={dropdownRef}>
           <button
             aria-label="Menu"
             aria-haspopup="true"
-            aria-expanded={isDropdownOpen}
+            // aria-expanded={isDropdownOpen}
             aria-controls="dropdown-menu"
             className="focus:outline-none rounded-sm transition-transform transform hover:scale-115 duration-200"
             onClick={toggleDropdown}

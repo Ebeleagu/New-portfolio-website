@@ -1,4 +1,5 @@
 // import React from 'react'
+// import FirstPage from "./FirstPage";
 import Header from "./Header";
 
 import { Outlet } from "react-router-dom";
@@ -8,6 +9,7 @@ export default function Structure() {
     <main>
       <Header />
       <Outlet />
+      {/* <FirstPage /> */}
     </main>
   );
 }
