@@ -1,0 +1,11 @@
+html {
+  scroll-behavior: smooth;
+}
+#Contact,
+#About,
+#Services,
+#Connect,
+#Projects,
+#Home {
+  scroll-margin-top: 60px;
+}

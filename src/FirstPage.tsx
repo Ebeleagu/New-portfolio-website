@@ -1,18 +1,24 @@
 function FirstPage() {
   return (
-    <main className="text-white h-[100vh] flex items-center justify-center bg-gray-900 relative overflow-hidden">
-     
+    <main
+      id="Home"
+      className="text-white h-[100vh] flex items-center justify-center bg-gray-900 relative overflow-hidden"
+    >
       <div className="absolute inset-0 flex items-center justify-center animation-bounceSwitch">
         <div className="text-center">
           <div className="mb-4">
             <p className="text-2xl font-mono">HELLO! I'M </p>
-            <p className="md:text-8xl text-6xl font-mono font-bold">DAVID BEN</p>
+            <p className="md:text-8xl text-6xl font-mono font-bold">
+              DAVID BEN
+            </p>
           </div>
         </div>
         <div className="absolute inset-0 flex items-center justify-center opacity-0 animation-Switch">
           <div className="text-center">
             <p className="text-2xl font-mono">I'M FROM NIGERIA</p>
-            <p className="text-6xl md:text-8xl font-mono font-bold">A WEB DEVELOPER</p>
+            <p className="text-6xl md:text-8xl font-mono font-bold">
+              A WEB DEVELOPER
+            </p>
           </div>
         </div>
       </div>

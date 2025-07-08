@@ -4,7 +4,10 @@ import { TbBracketsAngleOff } from "react-icons/tb";
 
 const Services = () => {
   return (
-    <main className="p-8 md:p-15 h-auto min-h-screen bg-gray-900 flex flex-col items-center justify-center animate-fadeInUp">
+    <main
+      id="Services"
+      className="p-8 md:p-15 h-auto min-h-screen bg-gray-900 flex flex-col items-center justify-center animate-fadeInUp"
+    >
       <h1 className="text-white opacity-40 text-2xl md:text-4xl text-center font-mono mb-5">
         WHAT I DO
       </h1>
