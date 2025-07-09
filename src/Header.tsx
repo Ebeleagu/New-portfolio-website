@@ -1,7 +1,6 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import Pic from "/zavid.jpg";
 import { IoMenuOutline } from "react-icons/io5";
-import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
 const Header: React.FC = () => {
@@ -63,7 +62,7 @@ const Header: React.FC = () => {
             aria-haspopup="true"
             // aria-expanded={isDropdownOpen}
             aria-controls="dropdown-menu"
-            className="focus:outline-none rounded-sm transition-transform transform hover:scale-115 duration-200"
+            className="focus:outline-none rounded-sm transition-transform transform hover:scale-115 duration-200 cursor-pointer"
             onClick={toggleDropdown}
           >
             <IoMenuOutline style={{ fontSize: "2.5rem" }} />
@@ -108,45 +107,45 @@ const Header: React.FC = () => {
           </div>
 
           <nav className="flex flex-col px-4 py-2 bg-gray-100 rounded-b-xl space-y-2 font-mono text-gray-800">
-            <Link
-              to="/"
+            <a
+              href="#Home"
               className="block px-4 py-2 rounded-lg hover:bg-gradient-to-r from-purple-400 via-pink-500 to-red-400 hover:text-white transition-all duration-200"
               onClick={() => setDropdownOpen(false)}
             >
               Home
-            </Link>
+            </a>
 
-            <Link
-              to="/about"
+            <a
+              href="#About"
               className="block px-4 py-2 rounded-lg hover:bg-gradient-to-r from-purple-400 via-pink-500 to-red-400 hover:text-white transition-all duration-200"
               onClick={() => setDropdownOpen(false)}
             >
               About
-            </Link>
+            </a>
 
-            <Link
-              to="/services"
+            <a
+              href="#Services"
               className="block px-4 py-2 rounded-lg hover:bg-gradient-to-r from-purple-400 via-pink-500 to-red-400 hover:text-white transition-all duration-200"
               onClick={() => setDropdownOpen(false)}
             >
               Services
-            </Link>
+            </a>
 
-            <Link
-              to="/projects"
+            <a
+              href="#Projects"
               className="block px-4 py-2 rounded-lg hover:bg-gradient-to-r from-purple-400 via-pink-500 to-red-400 hover:text-white transition-all duration-200"
               onClick={() => setDropdownOpen(false)}
             >
               Projects
-            </Link>
+            </a>
 
-            <Link
-              to="/contact"
+            <a
+              href="#Contact"
               className="block px-4 py-2 rounded-lg hover:bg-gradient-to-r from-purple-400 via-pink-500 to-red-400 hover:text-white transition-all duration-200"
               onClick={() => setDropdownOpen(false)}
             >
               Contact
-            </Link>
+            </a>
           </nav>
         </div>
       )}
@@ -175,8 +174,8 @@ const Header: React.FC = () => {
           </div>
 
           <nav className="flex flex-col w-full items-center space-y-4 text-2xl">
-            <Link
-              to="/"
+            <a
+              href="#Home"
               className="block px-4 py-2 rounded-lg hover:bg-gradient-to-r from-purple-400 via-pink-500 to-red-400 hover:text-white transition-all duration-200"
               onClick={() => {
                 setDropdownOpen(false);
@@ -184,9 +183,9 @@ const Header: React.FC = () => {
               }}
             >
               Home
-            </Link>
-            <Link
-              to="/about"
+            </a>
+            <a
+              href="#About"
               className="block px-4 py-2 rounded-lg hover:bg-gradient-to-r from-purple-400 via-pink-500 to-red-400 hover:text-white transition-all duration-200"
               onClick={() => {
                 setDropdownOpen(false);
@@ -194,9 +193,9 @@ const Header: React.FC = () => {
               }}
             >
               About
-            </Link>
-            <Link
-              to="/services"
+            </a>
+            <a
+              href="#Services"
               className="block px-4 py-2 rounded-lg hover:bg-gradient-to-r from-purple-400 via-pink-500 to-red-400 hover:text-white transition-all duration-200"
               onClick={() => {
                 setDropdownOpen(false);
@@ -204,9 +203,9 @@ const Header: React.FC = () => {
               }}
             >
               Services
-            </Link>
-            <Link
-              to="/projects"
+            </a>
+            <a
+              href="#Projects"
               className="block px-4 py-2 rounded-lg hover:bg-gradient-to-r from-purple-400 via-pink-500 to-red-400 hover:text-white transition-all duration-200"
               onClick={() => {
                 setDropdownOpen(false);
@@ -214,9 +213,9 @@ const Header: React.FC = () => {
               }}
             >
               Projects
-            </Link>
-            <Link
-              to="/contact"
+            </a>
+            <a
+              href="#Contact"
               className="block px-4 py-2 rounded-lg hover:bg-gradient-to-r from-purple-400 via-pink-500 to-red-400 hover:text-white transition-all duration-200"
               onClick={() => {
                 setDropdownOpen(false);
@@ -224,7 +223,7 @@ const Header: React.FC = () => {
               }}
             >
               Contact
-            </Link>
+            </a>
           </nav>
         </div>
       )}

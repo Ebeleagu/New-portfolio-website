@@ -9,7 +9,10 @@ const Projects = () => {
   };
 
   return (
-    <main className="h-full p-6 md:p-10 bg-gray-900 text-white w-full">
+    <main
+      id="Projects"
+      className="h-full p-6 md:p-10 bg-gray-900 text-white w-full"
+    >
       <div className="mx-auto" style={{ width: "80vw" }}>
         <h2 className="text-2xl mb-2 font-mono opacity-40 text-center">
           PORTFOLIO
