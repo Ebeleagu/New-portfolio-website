@@ -67,11 +67,13 @@ const Connect = () => {
         transition={{ duration: 1, delay: 0.5 }}
       >
         <h1 className="text-3xl mb-4 font-semibold font-mono">Contact Me</h1>
-        <div className="flex justify-center items-center gap-5">
-          <span className=" text-3xl hover:text-pink-500 transition-transform transform hover:scale-125 duration-300">
-            <i>
-              <CgMail />
-            </i>
+
+        <div className="flex justify-center items-center gap-5 mb-5">
+          <span
+            className="text-3xl hover:text-pink-500 transition-transform transform hover:scale-125 duration-300"
+            aria-label="Email"
+          >
+            <CgMail />
           </span>
           <a
             href="mailto:Davydbernard@gmail.com"
@@ -80,14 +82,16 @@ const Connect = () => {
             Davydbernard@gmail.com
           </a>
         </div>
-        <div className="flex justify-center items-center gap-5 mt-5">
-          <span className=" text-3xl hover:text-pink-500 transition-transform transform hover:scale-125 duration-300">
-            <i>
-              <FaPhoneAlt />
-            </i>
+
+        <div className="flex justify-center items-center gap-5">
+          <span
+            className="text-3xl hover:text-pink-500 transition-transform transform hover:scale-125 duration-300"
+            aria-label="Phone"
+          >
+            <FaPhoneAlt />
           </span>
           <a
-            href="phone no"
+            href="tel:+2348168656764"
             className="text-xl hover:text-blue-300 transition-colors duration-300 font-mono"
           >
             +234 8168 656764
@@ -96,7 +100,7 @@ const Connect = () => {
       </motion.div>
 
       <motion.p
-        className="mt-10 text-sm opacity-70 font-mono "
+        className="mt-10 text-sm opacity-70 font-mono"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1 }}

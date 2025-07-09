@@ -4,7 +4,7 @@ import { FaTwitter, FaFacebook, FaInstagram } from "react-icons/fa";
 
 function About() {
   return (
-    <main id="About" className=" p-4 sm:p-10 relative overflow-hidden">
+    <main id="About" className=" p-10 sm:p-10 relative overflow-hidden md:h-[100vh]">
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -22,7 +22,7 @@ function About() {
           <img
             src={Pic}
             alt="picture of David Ben"
-            className="w-full md:max-h-[80vh] max-h-[50vh] object-cover rounded-lg shadow-lg"
+            className="w-full md:max-h-[80vh] max-h-[50vh] object-cover rounded-lg shadow-lg md:mt-15"
           />
         </motion.div>
 
@@ -37,7 +37,7 @@ function About() {
               delay: 0.5,
             }}
             viewport={{ once: false }}
-            className="absolute top-4 inset-x-10 text-white font-mono font-bold opacity-[15%] text-[10vw] md:text-[150px] leading-none flex items-center justify-center pointer-events-none z-0"
+            className="absolute top-4 inset-x-10 text-white font-mono font-bold opacity-[15%] text-[10vw] md:text-[150px] leading-none flex items-center justify-center md:mt-10 pointer-events-none z-0"
           >
             ABOUT
           </motion.h1>
@@ -49,7 +49,7 @@ function About() {
             viewport={{ once: false }}
             className="relative z-10 text-center md:text-left mt-20 md:mt-0"
           >
-            <p className="text-white text-2xl md:text-3xl font-mono mb-4 md:mb-6">
+            <p className="text-white text-2xl md:text-3xl font-mono mb-4 md:mb-6 md:mt-15">
               Hi! I'm David Ben
             </p>
             <p className="text-white text-base md:text-xl font-mono leading-6 md:leading-10 max-w-2xl mx-auto md:mx-0">

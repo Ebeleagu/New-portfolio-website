@@ -13,7 +13,6 @@ const Achievements = () => {
     cups: 50,
   };
 
- 
   const animateCount = (setter, target) => {
     let startTimestamp = null;
     const duration = 1000;
@@ -56,13 +55,11 @@ const Achievements = () => {
   }, [hasAnimated]);
 
   return (
-    
     <main
       ref={sectionRef}
-      className="mt-20 pt-20 flex items-center justify-center h-[96vh]"
+      className="mt-20 pt-20 flex items-center justify-center md:h-[96vh]"
     >
       <div className="relative max-w-4xl w-full text-center px-4">
-       
         <h1 className="text-white font-mono opacity-40 mb-3 text-xl md:text-2xl">
           Portfolio
         </h1>
@@ -74,18 +71,16 @@ const Achievements = () => {
         </p>
 
         <div className="w-full flex flex-col md:flex-row md:justify-center md:space-x-32 items-center md:items-start">
-          
           <div className="w-32 md:w-40 lg:w-48 mb-8 md:mb-0 flex flex-col items-center">
-           
             <p className="text-white opacity-40 font-mono text-2xl mb-2">
               Clients
             </p>
-          
+
             <span className="text-blue-500 text-5xl md:text-9xl font-mono">
               {clientsCount}
             </span>
           </div>
-         
+
           <div className="w-32 md:w-40 lg:w-48 mb-8 md:mb-0 flex flex-col items-center">
             <p className="text-white opacity-40 font-mono text-2xl mb-2">
               Projects done
@@ -94,7 +89,7 @@ const Achievements = () => {
               {projectsCount}
             </span>
           </div>
-          
+
           <div className="w-32 md:w-40 lg:w-48 flex flex-col items-center">
             <p className="text-white opacity-40 font-mono text-2xl mb-2">
               Cups of tea

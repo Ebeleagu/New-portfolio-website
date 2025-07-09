@@ -44,14 +44,14 @@ const Header: React.FC = () => {
 
   return (
     <header className="h-[12vh] bg-gray-900 text-white flex justify-center relative z-50 shadow-md shadow-gray">
-      <div className="flex justify-around items-center h-full w-full max-w-7xl px-4">
+      <div className="flex justify-around items-center h-full w-full max-w-7xl md:px-4">
         <div className="flex items-center">
           <img
             src={Pic}
             alt="Profile picture of David Ben"
             className="object-cover h-[70px] w-[70px] rounded-full"
           />
-          <span className="text-4xl px-4 font-mono ml-2 tracking-wide">
+          <span className="md:text-4xl text-2xl md:px-4 font-mono ml-2 tracking-wide">
             David Ben
           </span>
         </div>
@@ -95,15 +95,13 @@ const Header: React.FC = () => {
             z-50  
           "
         >
-          <div className="flex flex-col items-center p-4 border-b border-gray-200 bg-gray-100 rounded-t-xl shadow-sm">
+          <div className="flex flex-col items-center p-4  border-gray-200 bg-gray-100 rounded-t-xl shadow-sm">
             <img
               src={Pic}
               alt="Profile picture of David Ben"
-              className="object-cover h-20 w-20 rounded-full border-2 border-gray-300 mb-2"
+              className="object-cover h-20 w-20 rounded-full  border-gray-300 mb-2"
             />
-            <span className="font-semibold text-lg text-gray-800">
-              David Ben
-            </span>
+            
           </div>
 
           <nav className="flex flex-col px-4 py-2 bg-gray-100 rounded-b-xl space-y-2 font-mono text-gray-800">
