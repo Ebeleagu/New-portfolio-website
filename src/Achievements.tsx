@@ -1,46 +1,72 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 
-const Achievements = () => {
-  const sectionRef = useRef(null);
+interface AchievementTarget {
+  clients: number;
+  projects: number;
+  cups: number;
+}
+
+const Achievements: React.FC = () => {
+  const sectionRef = useRef<HTMLDivElement | null>(null);
   const [hasAnimated, setHasAnimated] = useState(false);
   const [clientsCount, setClientsCount] = useState(0);
   const [projectsCount, setProjectsCount] = useState(0);
   const [cupsCount, setCupsCount] = useState(0);
 
-  const targets = {
+  const targets: AchievementTarget = {
     clients: 10,
     projects: 16,
     cups: 50,
   };
 
-  const animateCount = (setter, target) => {
-    let startTimestamp = null;
-    const duration = 1000;
-    const step = (timestamp) => {
-      if (!startTimestamp) startTimestamp = timestamp;
-      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-      const current = Math.floor(progress * target);
-      setter(current);
-      if (progress < 1) {
-        requestAnimationFrame(step);
-      } else {
-        setter(target);
-      }
-    };
-    requestAnimationFrame(step);
+  const animationDuration = 1000; // in milliseconds
+
+  // Format number with commas for better readability
+  const formatNumber = (num: number): string => {
+    return num.toLocaleString();
   };
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !hasAnimated) {
-          animateCount(setClientsCount, targets.clients);
-          animateCount(setProjectsCount, targets.projects);
-          animateCount(setCupsCount, targets.cups);
-          setHasAnimated(true);
+  const animateCount = useCallback(
+    (setter: React.Dispatch<React.SetStateAction<number>>, target: number) => {
+      let startTimestamp: number | null = null;
+
+      const step = (timestamp: number) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const elapsed = timestamp - startTimestamp;
+        const progress = Math.min(elapsed / animationDuration, 1);
+        const current = Math.floor(progress * target);
+        setter(current);
+
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        } else {
+          setter(target);
         }
-      },
-      { threshold: 0.5 }
+      };
+
+      requestAnimationFrame(step);
+    },
+    [animationDuration]
+  );
+
+  useEffect(() => {
+    const observerCallback = ([entry]: IntersectionObserverEntry[]) => {
+      if (entry.isIntersecting && !hasAnimated) {
+        // Animate counters
+        animateCount(setClientsCount, targets.clients);
+        animateCount(setProjectsCount, targets.projects);
+        animateCount(setCupsCount, targets.cups);
+        setHasAnimated(true);
+      }
+    };
+
+    const observerOptions = {
+      threshold: 0.5,
+    };
+
+    const observer = new IntersectionObserver(
+      observerCallback,
+      observerOptions
     );
 
     if (sectionRef.current) {
@@ -52,7 +78,7 @@ const Achievements = () => {
         observer.unobserve(sectionRef.current);
       }
     };
-  }, [hasAnimated]);
+  }, [hasAnimated, animateCount, targets]);
 
   return (
     <main
@@ -71,31 +97,31 @@ const Achievements = () => {
         </p>
 
         <div className="w-full flex flex-col md:flex-row md:justify-center md:space-x-32 items-center md:items-start">
+          {/* Clients */}
           <div className="w-32 md:w-40 lg:w-48 mb-8 md:mb-0 flex flex-col items-center">
             <p className="text-white opacity-40 font-mono text-2xl mb-2">
               Clients
             </p>
-
             <span className="text-blue-500 text-5xl md:text-9xl font-mono">
-              {clientsCount}
+              {formatNumber(clientsCount)}
             </span>
           </div>
-
+          {/* Projects */}
           <div className="w-32 md:w-40 lg:w-48 mb-8 md:mb-0 flex flex-col items-center">
             <p className="text-white opacity-40 font-mono text-2xl mb-2">
               Projects done
             </p>
             <span className="text-blue-500 text-5xl md:text-9xl font-mono">
-              {projectsCount}
+              {formatNumber(projectsCount)}
             </span>
           </div>
-
+          {/* Cups of tea */}
           <div className="w-32 md:w-40 lg:w-48 flex flex-col items-center">
             <p className="text-white opacity-40 font-mono text-2xl mb-2">
               Cups of tea
             </p>
             <span className="text-blue-500 text-5xl md:text-9xl font-mono">
-              {cupsCount}
+              {formatNumber(cupsCount)}
             </span>
           </div>
         </div>

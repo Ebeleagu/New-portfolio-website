@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent, FormEvent } from "react";
+import React, { useState } from "react";
 import emailjs from "emailjs-com";
 
 interface FormData {
@@ -18,19 +18,20 @@ const Contact: React.FC = () => {
     message: "",
   });
 
-  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
-  const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  // Handle input changes without explicit event typing
+  const handleChange = (e: any): void => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  // Handle form submission without explicit event typing
+  const handleSubmit = async (e: any): Promise<void> => {
     e.preventDefault();
     setIsSubmitting(true);
-
     try {
       await emailjs.send(
         "service_e85hkrr",
@@ -43,9 +44,8 @@ const Contact: React.FC = () => {
         },
         "P5732EPqqQJCK1TEl"
       );
-
-      alert(" Message sent!");
-
+      setSuccessMessage("Your message has been sent successfully!");
+      setErrorMessage("");
       setFormData({
         firstName: "",
         lastName: "",
@@ -55,84 +55,97 @@ const Contact: React.FC = () => {
       });
     } catch (error) {
       console.error("Error sending email:", error);
-      alert(
-        "Sorry, there was an error sending your message. Please try again."
+      setErrorMessage(
+        "There was an error sending your message. Please try again."
       );
+      setSuccessMessage("");
     } finally {
       setIsSubmitting(false);
     }
   };
 
   return (
-    <main id="Contact" className=" p-10 w-full font-mono text-white md:h-[100vh]">
+    <main
+      className="p-10 w-full font-mono text-white md:h-[100vh]"
+      id="Contact"
+    >
       <h1 className="text-4xl text-center font-bold mb-6">Contact Form</h1>
+
+      {successMessage && (
+        <p className="text-green-500 mb-4">{successMessage}</p>
+      )}
+      {errorMessage && <p className="text-red-500 mb-4">{errorMessage}</p>}
+
       <form
         onSubmit={handleSubmit}
         className="flex flex-col justify-center items-center"
       >
-        <div
-          className="flex sm:flex-row flex-col justify-center md:space-x-5 mb-8 sm:max-w-2xl
-         w-[100%]  sm:gap-3 gap-6"
-        >
+        {/* Name Inputs */}
+        <div className="flex sm:flex-row flex-col justify-center md:space-x-5 mb-8 sm:max-w-2xl w-full gap-3">
           <input
             type="text"
             name="firstName"
-            value={formData.firstName}
-            onChange={handleChange}
             placeholder="First Name"
             aria-label="First Name"
-            className="border-b border-gray-400 outline-none p-2 flex-grow placeholder-gray-500 hover:border-blue-500 focus:border-black transition duration-200 w-[100%] sm:w-[50%]"
+            value={formData.firstName}
+            onChange={handleChange}
             required
+            className="border-b border-gray-400 outline-none p-2 flex-grow placeholder-gray-500 hover:border-blue-500 focus:border-black transition duration-200 w-full sm:w-[50%]"
           />
           <input
             type="text"
             name="lastName"
-            value={formData.lastName}
-            onChange={handleChange}
             placeholder="Last Name"
             aria-label="Last Name"
-            className="border-b border-gray-400 outline-none p-2 flex-grow placeholder-gray-500 hover:border-blue-500 focus:border-black transition duration-200 w-full sm:w-[50%]"
+            value={formData.lastName}
+            onChange={handleChange}
             required
+            className="border-b border-gray-400 outline-none p-2 flex-grow placeholder-gray-500 hover:border-blue-500 focus:border-black transition duration-200 w-full sm:w-[50%]"
           />
         </div>
+
+        {/* Email & Subject */}
         <div className="flex flex-col mb-8 w-full max-w-2xl">
           <input
             type="email"
             name="email"
-            value={formData.email}
-            onChange={handleChange}
             placeholder="Email Address"
             aria-label="Email Address"
-            className="border-b border-gray-400 outline-none p-2 mb-8 placeholder-gray-500 hover:border-blue-500 focus:border-black transition duration-200 w-full"
+            value={formData.email}
+            onChange={handleChange}
             required
+            className="border-b border-gray-400 outline-none p-2 mb-8 placeholder-gray-500 hover:border-blue-500 focus:border-black transition duration-200 w-full"
           />
           <input
             type="text"
             name="subject"
-            value={formData.subject}
-            onChange={handleChange}
             placeholder="Subject of Message"
             aria-label="Subject"
-            className="border-b border-gray-400 outline-none p-2 mb-8 placeholder-gray-500 hover:border-blue-500 focus:border-black transition duration-200 w-full"
+            value={formData.subject}
+            onChange={handleChange}
             required
+            className="border-b border-gray-400 outline-none p-2 mb-8 placeholder-gray-500 hover:border-blue-500 focus:border-black transition duration-200 w-full"
           />
+
+          {/* Message Textarea */}
           <div className="mt-6">
             <textarea
               name="message"
-              value={formData.message}
-              onChange={handleChange}
               placeholder="Type your message here..."
               aria-label="Message"
-              className="border-b border-gray-400 outline-none p-2 flex-grow placeholder-gray-500 hover:border-blue-500 focus:border-black transition duration-200 h-[25vh] w-full"
+              value={formData.message}
+              onChange={handleChange}
               required
+              className="border-b border-gray-400 outline-none p-2 h-[25vh] w-full placeholder-gray-500 hover:border-blue-500 focus:border-black transition duration-200 resize-none"
             />
           </div>
         </div>
 
+        {/* Submit Button */}
         <button
           type="submit"
-          className="bg-blue-500 p-3 rounded-full text-white transition-transform transform hover:scale-105 active:scale-95 w-full max-w-xs disabled:opacity-50"
           disabled={isSubmitting}
+          className="bg-blue-500 p-3 rounded-full text-white transition-transform transform hover:scale-105 active:scale-95 w-full max-w-xs disabled:opacity-50"
         >
           {isSubmitting ? "Sending..." : "Send Message"}
         </button>
